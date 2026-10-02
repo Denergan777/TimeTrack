@@ -1,0 +1,474 @@
+﻿
+
+
+    <!-- =========================
+         SPLASH SCREEN
+    ========================== -->
+
+    <div id="splashScreen">
+
+        <div class="splash-content">
+
+
+            <!-- RELÓGIO -->
+
+            <div class="clock">
+
+                <div class="hand hour-hand"></div>
+
+                <div class="hand minute-hand"></div>
+
+                <div class="hand second-hand"></div>
+
+                <div class="clock-center"></div>
+
+            </div>
+
+
+            <!-- LOGO -->
+
+            <div class="splash-logo">
+                TimeTrack<span>DNR</span>
+            </div>
+
+            <div class="splash-subtitle">
+                Controle de horas de trabalho
+            </div>
+
+
+            <!-- LOADING -->
+
+            <div class="loading-bar">
+
+                <div class="loading-progress"></div>
+
+            </div>
+
+            <div class="loading-text">
+                CARREGANDO...
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         SITE
+    ========================== -->
+
+    <header>
+        <div class="header-brand">
+            <span class="brand-clock-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="8.8"></circle>
+                    <path d="M12 7v5l3.4 2"></path>
+                    <path d="M8 2.8h8"></path>
+                </svg>
+            </span>
+            <h1>TimeTrack<span>DNR</span></h1>
+        </div>
+
+        <p>
+            Controle de horas de trabalho
+        </p>
+
+    </header>
+
+
+    <main>
+
+        <section class="login-card">
+
+            <h2>Bem-vindo</h2>
+
+            <p class="login-description">
+                Entre com seu e-mail e senha individuais para acessar seus registros.
+            </p>
+
+
+            <form id="loginForm">
+
+                <div class="form-group signup-field" hidden>
+                    <label for="firstName">Nome</label>
+                    <input type="text" id="firstName" name="firstName" placeholder="Digite seu nome" autocomplete="given-name" required disabled>
+                </div>
+
+                <div class="form-group signup-field" hidden>
+                    <label for="lastName">Sobrenome</label>
+                    <input type="text" id="lastName" name="lastName" placeholder="Digite seu sobrenome" autocomplete="family-name" required disabled>
+                </div>
+
+                <div class="form-group">
+
+                    <label for="email">
+                        E-mail
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Digite seu e-mail"
+                        autocomplete="username"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="password">
+                        Senha
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Digite sua senha"
+                        autocomplete="current-password"
+                        required
+                    >
+
+                </div>
+
+                <div class="form-group signup-field" hidden>
+                    <label for="passwordConfirmation">Confirmação da senha</label>
+                    <input type="password" id="passwordConfirmation" name="passwordConfirmation" placeholder="Digite sua senha novamente" autocomplete="new-password" required disabled>
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="login-button"
+                >
+                    Entrar
+                </button>
+
+                <p id="authMessage" role="status" aria-live="polite"></p>
+
+                <button type="button" id="toggleAuthMode" class="forgot-password">
+                    Criar uma nova conta
+                </button>
+
+            </form>
+
+
+            <a
+                href="#"
+                class="forgot-password"
+                id="forgotPassword"
+            >
+                Esqueci minha senha
+            </a>
+
+        </section>
+
+        <section id="dashboardScreen" class="dashboard" hidden>
+            <aside class="dashboard-sidebar" aria-label="Navegação principal">
+                <div class="sidebar-brand">
+                    <span class="brand-clock-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="8.8"></circle>
+                            <path d="M12 7v5l3.4 2"></path>
+                            <path d="M8 2.8h8"></path>
+                        </svg>
+                    </span>
+                    <span class="sidebar-brand-name">TimeTrack<span>DNR</span></span>
+                </div>
+                <div class="sidebar-profile">
+                    <label class="avatar-upload" for="avatarFile" title="Escolher foto de perfil">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+                            <circle cx="12" cy="8" r="3.4"></circle>
+                            <path d="M5 20c.7-3.3 3.2-5 7-5s6.3 1.7 7 5"></path>
+                        </svg>
+                        <img id="avatarImage" alt="Foto de perfil">
+                        <input type="file" id="avatarFile" accept="image/*" aria-label="Escolher foto de perfil">
+                    </label>
+                    <div class="profile-copy">
+                        <p id="profileName" class="profile-name">Usuário</p>
+                        <p class="profile-caption">Meu perfil</p>
+                    </div>
+                </div>
+                <div class="sidebar-timer">
+                    <p class="sidebar-timer-label">Cronômetro da jornada</p>
+                    <p id="dashboardClock" class="sidebar-timer-value">00:00:00</p>
+                    <p id="timerCaption" class="sidebar-timer-caption">Aguardando início</p>
+                </div>
+                <nav class="sidebar-nav">
+                    <button type="button" class="nav-button" data-view="overview" aria-current="page">
+                        <span class="sidebar-nav-icon" aria-hidden="true">⌂</span><span>Visão geral</span>
+                    </button>
+                    <button type="button" class="nav-button" data-view="timeManagement">
+                        <span class="sidebar-nav-icon" aria-hidden="true">◷</span><span>Gestão de tempo</span>
+                    </button>
+                    <div class="sidebar-month">
+                        <span id="sidebarMonthLabel"></span>
+                        <span class="sidebar-month-controls">
+                            <button type="button" id="sidebarPreviousMonth" aria-label="Mês anterior">‹</button>
+                            <button type="button" id="sidebarNextMonth" aria-label="Próximo mês">›</button>
+                        </span>
+                    </div>
+                    <div id="sidebarDays" class="sidebar-days" aria-label="Dias do mês"></div>
+                    <button type="button" class="nav-button" data-view="profile">
+                        <span class="sidebar-nav-icon" aria-hidden="true">&#9673;</span><span>Meu perfil</span>
+                    </button>
+                    <button type="button" id="hierarchyNavButton" class="nav-button" data-view="hierarchy">
+                        <span class="sidebar-nav-icon" aria-hidden="true">&#8645;</span><span>Hierarquia</span>
+                        <span id="hierarchyNotificationCount" class="hierarchy-notification-count" hidden>0</span>
+                    </button>
+                    <button type="button" class="nav-button" data-view="history">
+                        <span class="sidebar-nav-icon" aria-hidden="true">▤</span><span>Histórico</span>
+                    </button>
+                </nav>
+                <p id="sidebarAccount" class="sidebar-account"></p>
+            </aside>
+
+            <div class="dashboard-content">
+                <section id="overviewView" class="dashboard-view">
+                    <div class="dashboard-heading">
+                        <div>
+                            <h2>Registro de horas</h2>
+                            <p>Acompanhe sua jornada de trabalho.</p>
+                            <p id="dashboardUser" class="dashboard-user"></p>
+                        </div>
+                        <button type="button" id="logoutButton" class="secondary-button">Sair da conta</button>
+                    </div>
+
+                    <div class="dashboard-grid">
+                        <section class="dashboard-card" aria-labelledby="todayHeading">
+                            <h3 id="todayHeading">Jornada de hoje</h3>
+                            <p id="todayDate" class="dashboard-date"></p>
+                            <p id="todayHours" class="hours-total today-hours-value">0h 00min</p>
+                            <p class="hours-caption">Tempo registrado hoje</p>
+                            <p id="trackingStatus" class="tracking-status" role="status" aria-live="polite">Nenhuma jornada iniciada.</p>
+                            <div class="punch-actions">
+                                <button type="button" id="startShiftButton" class="punch-button start">Iniciar jornada</button>
+                                <button type="button" id="lunchPauseButton" class="punch-button pause" disabled hidden>Pausar para almoço</button>
+                                <button type="button" id="lunchResumeButton" class="punch-button resume" hidden>Retomar jornada</button>
+                                <button type="button" id="finishShiftButton" class="punch-button finish" disabled>Encerrar jornada</button>
+                            </div>
+                            <p id="dashboardMessage" class="dashboard-message" role="alert" aria-live="polite"></p>
+                        </section>
+
+                        <section class="dashboard-card" aria-labelledby="summaryHeading">
+                            <h3 id="summaryHeading">Como funciona</h3>
+                            <p class="hours-caption">Use o cronômetro da barra lateral para acompanhar o tempo da jornada. Em Gestão de tempo, você também pode registrar ou corrigir horários manualmente.</p>
+                        </section>
+
+                        <section id="historySection" class="dashboard-card history-card" aria-labelledby="historyHeading">
+                            <h3 id="historyHeading">Histórico de registros</h3>
+                            <p class="hours-caption">Seus registros são sincronizados com sua conta para acesso em outros dispositivos.</p>
+                            <div class="history-row header" aria-hidden="true">
+                                <span>Data</span><span>Entrada</span><span>Saída</span><span>Duração</span>
+                            </div>
+                            <div id="historyList" class="history-list"></div>
+                        </section>
+                    </div>
+
+                    <section class="dashboard-card vacation-card" aria-labelledby="vacationHeading">
+                        <h3 id="vacationHeading">Férias</h3>
+                        <p class="hours-caption">Você dispõe de até 30 dias de férias por ano.</p>
+                        <div class="vacation-calendar-header">
+                            <button type="button" id="vacationPreviousMonth" class="vacation-month-button" aria-label="Mês anterior">‹</button>
+                            <h4 id="vacationMonthLabel"></h4>
+                            <button type="button" id="vacationNextMonth" class="vacation-month-button" aria-label="Próximo mês">›</button>
+                        </div>
+                        <div class="vacation-weekdays" aria-hidden="true">
+                            <span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span><span>Dom</span>
+                        </div>
+                        <div id="vacationCalendarDays" class="vacation-calendar-days" role="group" aria-label="Selecione os dias de férias"></div>
+                        <p id="vacationSelectionCount" class="vacation-selection-count" role="status" aria-live="polite">0 de 30 dias selecionados</p>
+                        <div class="vacation-actions">
+                            <button type="button" id="requestVacationButton" class="punch-button resume vacation-submit" disabled>Solicitar férias</button>
+                            <p id="vacationMessage" class="vacation-message" role="status" aria-live="polite"></p>
+                        </div>
+                        <div id="vacationRequestList" class="vacation-request-list" aria-label="Solicitações de férias"></div>
+                    </section>
+                </section>
+
+                <section id="timeManagementView" class="dashboard-view management-panel" hidden>
+                    <div class="dashboard-heading">
+                        <div>
+                            <h2>Gestão de tempo</h2>
+                            <p>Preencha ou ajuste os horários da sua jornada.</p>
+                        </div>
+                        <button type="button" id="logoutButtonManagement" class="secondary-button">Sair da conta</button>
+                    </div>
+
+                    <section class="dashboard-card">
+                        <h3>Horários do dia</h3>
+                        <p class="hours-caption">Informe entrada e saída. Pausas são opcionais, mas devem ser preenchidas em par.</p>
+                        <form id="timeEntryForm" class="management-form">
+                            <div class="form-group">
+                                <label for="entryDateDisplay">Data</label>
+                                <div id="datePicker" class="date-picker">
+                                    <input type="date" id="entryDate" tabindex="-1" aria-hidden="true" style="display: none;">
+                                    <div class="date-picker-control">
+                                        <input type="text" id="entryDateDisplay" placeholder="Selecione uma data" readonly aria-haspopup="dialog" aria-expanded="false" aria-controls="calendarPopover">
+                                        <button type="button" id="datePickerToggle" class="date-picker-toggle" aria-label="Abrir calendário" aria-expanded="false" aria-controls="calendarPopover">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                                                <rect x="3.5" y="5" width="17" height="16" rx="3"></rect>
+                                                <path d="M7.5 3v4M16.5 3v4M3.5 10h17"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <div id="calendarPopover" class="calendar-popover" role="dialog" aria-label="Selecione uma data" hidden>
+                                        <div class="calendar-header">
+                                            <button type="button" id="calendarPrevious" class="calendar-nav-button" aria-label="Mês anterior">‹</button>
+                                            <h4 id="calendarMonthLabel"></h4>
+                                            <button type="button" id="calendarNext" class="calendar-nav-button" aria-label="Próximo mês">›</button>
+                                        </div>
+                                        <div class="calendar-weekdays" aria-hidden="true">
+                                            <span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span><span>Dom</span>
+                                        </div>
+                                        <div id="calendarDays" class="calendar-days"></div>
+                                        <div class="calendar-footer">
+                                            <button type="button" id="calendarToday" class="calendar-today-button">Hoje</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="entryTime">Entrada</label>
+                                <input type="time" id="entryTime" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="breakStartTime">Início da pausa</label>
+                                <input type="time" id="breakStartTime">
+                            </div>
+                            <div class="form-group">
+                                <label for="breakEndTime">Fim da pausa</label>
+                                <input type="time" id="breakEndTime">
+                            </div>
+                            <div class="form-group">
+                                <label for="exitTime">Saída</label>
+                                <input type="time" id="exitTime" required>
+                            </div>
+                            <div class="management-actions">
+                                <button type="submit" class="login-button management-save">Salvar horários</button>
+                                <p id="timeEntryMessage" class="management-message" role="status" aria-live="polite"></p>
+                            </div>
+                        </form>
+                    </section>
+
+                    <section class="dashboard-card management-records">
+                        <div class="records-heading">
+                            <h3>Horários registrados</h3>
+                            <button type="button" id="exportRecordsButton" class="records-export" title="Exportar registros em PDF">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M12 3v11m0 0 4-4m-4 4-4-4"></path>
+                                    <path d="M5 15v4a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4"></path>
+                                </svg>
+                                Exportar PDF
+                            </button>
+                        </div>
+                        <p id="exportRecordsMessage" class="records-export-message" role="status" aria-live="polite"></p>
+                        <div class="history-row header" aria-hidden="true">
+                            <span>Data</span><span>Entrada</span><span>Saída</span><span>Total</span>
+                        </div>
+                        <div id="manualEntriesList" class="history-list"></div>
+                    </section>
+                </section>
+
+                <section id="hierarchyView" class="dashboard-view management-panel" hidden>
+                    <div class="dashboard-heading">
+                        <div>
+                            <h2>Hierarquia</h2>
+                            <p>Defina quem receberá as notificações das suas solicitações de férias.</p>
+                        </div>
+                    </div>
+                    <section class="dashboard-card">
+                        <h3>Meu gestor</h3>
+                        <p class="hours-caption">Informe o e-mail de uma conta já cadastrada no TimeTrackDNR. Essa pessoa verá suas solicitações de férias no aplicativo.</p>
+                        <form id="hierarchyForm" class="hierarchy-form">
+                            <div class="form-group">
+                                <label for="managerEmailInput">E-mail do gestor</label>
+                                <input type="email" id="managerEmailInput" autocomplete="email" placeholder="gestor@empresa.com">
+                            </div>
+                            <div class="hierarchy-actions">
+                                <button type="submit" id="saveHierarchyButton" class="login-button management-save">Salvar gestor</button>
+                                <button type="button" id="removeManagerButton" class="secondary-button">Remover gestor</button>
+                            </div>
+                            <p id="hierarchyMessage" class="hierarchy-message" role="status" aria-live="polite"></p>
+                        </form>
+                    </section>
+                    <section class="dashboard-card hierarchy-requests-card">
+                        <h3>Solicitações de férias recebidas</h3>
+                        <p class="hours-caption">As solicitações dos colaboradores que definiram você como gestor aparecem aqui.</p>
+                        <p id="managerDecisionMessage" class="hierarchy-message" role="status" aria-live="polite"></p>
+                        <div id="managerVacationRequests" class="vacation-request-list" aria-live="polite"></div>
+                    </section>
+                </section>
+
+                <section id="profileView" class="dashboard-view management-panel" hidden>
+                    <div class="dashboard-heading">
+                        <div>
+                            <h2>Meu perfil</h2>
+                            <p>Gerencie suas informações pessoais.</p>
+                        </div>
+                        <button type="button" id="logoutButtonProfile" class="secondary-button">Sair da conta</button>
+                    </div>
+                    <section class="dashboard-card">
+                        <h3>Dados do perfil</h3>
+                        <div class="profile-photo-editor">
+                            <div id="profilePhotoPreview" class="profile-photo-preview" aria-label="Foto de perfil atual">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                                    <circle cx="12" cy="8" r="3.5"></circle>
+                                    <path d="M4.5 21c.7-4.2 3.2-6.3 7.5-6.3s6.8 2.1 7.5 6.3"></path>
+                                </svg>
+                                <img id="profilePhotoImage" alt="">
+                            </div>
+                            <div class="profile-photo-copy">
+                                <p>Escolha uma foto de até 2 MB. Ela ficará salva neste navegador.</p>
+                                <button type="button" id="profilePhotoButton" class="profile-photo-button">Alterar foto</button>
+                            </div>
+                        </div>
+                        <form id="profileForm" class="management-form profile-form">
+                            <div class="form-group">
+                                <label for="profileNameInput">Nome</label>
+                                <input type="text" id="profileNameInput" autocomplete="name" required maxlength="100">
+                            </div>
+                            <div class="form-group">
+                                <label for="profileJobTitleInput">Cargo</label>
+                                <input type="text" id="profileJobTitleInput" autocomplete="organization-title" maxlength="100" placeholder="Ex.: Analista">
+                            </div>
+                            <div class="form-group">
+                                <label for="profilePhoneInput">Telefone</label>
+                                <input type="tel" id="profilePhoneInput" autocomplete="tel" maxlength="30" placeholder="(00) 00000-0000">
+                            </div>
+                            <div class="management-actions">
+                                <button type="submit" id="saveProfileButton" class="login-button management-save">Salvar perfil</button>
+                                <p id="profileMessage" class="profile-message" role="status" aria-live="polite"></p>
+                            </div>
+                        </form>
+                    </section>
+                </section>
+            </div>
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        © 2026 TimeTrackDNR.
+        Todos os direitos reservados.
+
+    </footer>
+
+    <div id="confirmationOverlay" class="confirmation-overlay" hidden>
+        <section class="confirmation-dialog" role="alertdialog" aria-modal="true" aria-labelledby="confirmationTitle" aria-describedby="confirmationMessage">
+            <div class="confirmation-icon" aria-hidden="true">?</div>
+            <h2 id="confirmationTitle">Tem certeza?</h2>
+            <p id="confirmationMessage">Confirme para continuar.</p>
+            <div class="confirmation-actions">
+                <button type="button" id="confirmationCancel" class="confirmation-button">Cancelar</button>
+                <button type="button" id="confirmationAccept" class="confirmation-button confirm">Sim, continuar</button>
+            </div>
+        </section>
+    </div>
+
+
+
