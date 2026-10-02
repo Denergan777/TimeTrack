@@ -3,4 +3,7 @@
 export default defineConfig({
   // Caminhos relativos: funciona no GitHub Pages em /TimeTrack/ e na raiz.
   base: "./",
+  esbuild: {
+    jsx: "automatic",
+  },
 });
